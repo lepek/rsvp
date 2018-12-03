@@ -1,0 +1,42 @@
+<div class="container">
+
+  <div class="card">
+
+    <h5 class="card-header info-color white-text text-center py-4">
+      <strong>Confirmar Asistencia</strong>
+    </h5>
+
+    <!--Card content-->
+    <div class="card-body px-lg-5">
+
+      <!-- Form -->
+
+      <%= form_tag({controller: "guests", action: "create", method: "post"}, class: "text-center", style: "color: #757575;") do %>
+
+        <p>Ingresa tu direccion de correo electrónico para confirmar tu asistencia</p>
+
+        <div class="md-form">
+          <label for="guestEmail" class="sr-only">Email</label>
+          <input
+            type="email"
+            id="guestEmail"
+            name="guest_email"
+            class="form-control"
+            placeholder="Email"
+            style="outline: 0; border-width: 0 0 1px; box-shadow: none; border-radius: 0 !important"
+            required autofocus>
+        </div>
+
+        <!-- Sign in button -->
+        <button
+          class="btn btn-outline-info btn-rounded z-depth-0 my-4 waves-effect"
+          style="border-radius: 24px;"
+          type="submit">Confirmar</button>
+
+      <% end %>
+      <!-- Form -->
+
+    </div>
+
+  </div>
+</div>

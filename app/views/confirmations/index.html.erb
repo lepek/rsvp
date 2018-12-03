@@ -1,0 +1,49 @@
+<div class="container events-list">
+  <div class="row justify-content-center">
+    <% @guest.invitations.each do |invitation| %>
+      <%
+        @address = invitation.event.address.split('.')
+        @date = invitation.event.date.strftime('%-d de %B, %Y')
+        @time = invitation.event.time.strftime('%H hs.')
+      %>
+      <div class="col-auto mb-3">
+        <div class="card" style="width: 18rem;">
+
+          <img class="card-img-top" src="<%= invitation.event.header %>" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title"><%= invitation.event.name.upcase %></h5>
+            <div class="card-text">
+              <div class="media-box">
+                <div class="media">
+                  <div class="media-left">
+                    <%= image_tag("calendar-green.png", class: 'icon-date') %>
+                  </div>
+                  <div class="media-body">
+                    <%= @date %> &middot; <%= @time %>
+                  </div>
+                </div>
+                <div class="media">
+                  <div class="media-left">
+                    <%= image_tag("place-green.png", class: 'icon-place') %>
+                  </div>
+                  <div class="media-body">
+                    <%= @address[0] %><br />
+                    <%= @address[1] %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer bg-transparent">
+            <%= link_to 'CONFIRMAR',
+                        { controller: 'confirmations', action: 'edit', id: invitation.id },
+                        class: 'btn btn-outline-info btn-rounded z-depth-0 my-4 waves-effect'
+            %>
+          </div>
+
+        </div>
+      </div>
+    <% end %>
+
+  </div>
+</div>

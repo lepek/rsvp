@@ -1,0 +1,129 @@
+<%
+  @address = @invitation.event.address.split('.')
+  @date = @invitation.event.date.strftime('%-d de %B, %Y')
+  @time = @invitation.event.time.strftime('%H hs.')
+%>
+
+<div class="container">
+  <div class="row justify-content-center events-list event">
+
+      <div class="card-group">
+        <div class="card" style="width: 18rem;">
+          <img class="card-img" src="<%= @invitation.event.image %>" alt="Card image">
+          <div class="card-img-overlay h-100 d-flex flex-column justify-content-end">
+            <div class="media-box">
+              <div class="media">
+                <div class="media-left">
+                  <%= image_tag("calendar-white.png", class: 'icon-date') %>
+                </div>
+                <div class="media-body">
+                  <%= @date %> &middot; <%= @time %>
+                </div>
+              </div>
+              <div class="media">
+                <div class="media-left">
+                  <%= image_tag("place-white.png", class: 'icon-place') %>
+                </div>
+                <div class="media-body">
+                  <%= @address[0] %><br />
+                  <%= @address[1] %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title"><%= @invitation.event.name.upcase %></h5>
+            <h6 class="card-subtitle"><strong><%= @guest.first_name %></strong>, nos confirmas tu asistencia?</h6>
+
+            <%= form_tag({controller: "confirmations", action: "update", id: @invitation.id, method: "put"}) do %>
+
+              <% if @invitation.adults.to_i > 0 %>
+                <div class="card-text group-start">
+                  Con quién venis?
+                </div>
+                <% (0...@invitation.adults.to_i).each do %>
+                <div class="card-text form-inline">
+                  <div class="form-group">
+                    <label for="guestFirstName" class="sr-only">Nombre</label>
+                    <input
+                      type="text"
+                      id="guestFirstName"
+                      name="guest_first_name"
+                      class="form-control"
+                      placeholder="Nombre"
+                      required autofocus />
+                  </div>
+                  <div class="form-group">
+                    <label for="guestLastName" class="sr-only">Apellido</label>
+                    <input
+                      type="text"
+                      id="guestLastName"
+                      name="guest_last_name"
+                      class="form-control"
+                      placeholder="Apellido"
+                      required autofocus />
+                  </div>
+                </div>
+                <% end %>
+              <% end %>
+
+              <% if @invitation.kids.to_i > 0 %>
+                <div class="card-text group-start">
+                  Niños (menores de 10 años)?
+                </div>
+                <% (0...@invitation.kids.to_i).each do %>
+                  <div class="card-text form-inline">
+                    <div class="form-group">
+                      <label for="guestFirstName" class="sr-only">Nombre</label>
+                      <input
+                        type="text"
+                        id="guestFirstName"
+                        name="guest_first_name"
+                        class="form-control"
+                        placeholder="Nombre"
+                        required autofocus />
+                    </div>
+                    <div class="form-group">
+                      <label for="guestLastName" class="sr-only">Apellido</label>
+                      <input
+                        type="text"
+                        id="guestLastName"
+                        name="guest_last_name"
+                        class="form-control"
+                        placeholder="Apellido"
+                        required autofocus />
+                    </div>
+                  </div>
+                <% end %>
+              <% end %>
+
+              <div class="card-text group-start">
+                Querés dejarnos algún mensaje?
+              </div>
+              <div class="card-text">
+                <label for="guestMsg" class="sr-only">Mensaje</label>
+                <textarea
+                  id="guestMsg"
+                  name="guest_msg"
+                  class="form-control"
+                  placeholder="Mensaje"></textarea>
+
+              </div>
+            <% end %>
+
+          </div>
+          <div class="card-footer bg-transparent">
+            <%= link_to 'CONFIRMAR',
+                        { controller: 'confirmations', action: 'edit', id: @invitation.id },
+                        class: 'btn btn-outline-info btn-rounded z-depth-0 my-4 waves-effect'
+            %>
+          </div>
+
+        </div>
+      </div>
+  </div>
+</div>
+
+

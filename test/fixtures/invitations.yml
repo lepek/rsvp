@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  event: one
+  main_guest: one
+  attendance: 1
+  notes: MyText
+
+two:
+  event: two
+  main_guest: two
+  attendance: 1
+  notes: MyText
