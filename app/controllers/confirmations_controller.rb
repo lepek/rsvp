@@ -3,12 +3,12 @@ class ConfirmationsController < ApplicationController
   before_action :validate_guest
 
   def validate_guest
-    unless session[:guest_email]
+    unless cookies.encrypted[:guest_email]
       flash[:alert] = 'Necesito tu email primero!'
       redirect_to :root
       return
     end
-    @guest = MainGuest.find_by_email(session[:guest_email])
+    @guest = MainGuest.find_by_email(cookies.encrypted[:guest_email])
     redirect_to :root and return unless @guest
   end
 
