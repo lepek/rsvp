@@ -3,7 +3,7 @@ class ConfirmationsController < ApplicationController
   before_action :validate_guest
 
   def validate_guest
-    guest_email = cookies.encrypted.permanent[:guest_email]
+    guest_email = Base64.decode64(params[:guest])
     unless guest_email
       flash[:alert] = 'Necesito tu email primero!'
       redirect_to :root

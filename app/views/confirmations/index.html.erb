@@ -35,7 +35,7 @@
           </div>
           <div class="card-footer bg-transparent">
             <%= link_to 'CONFIRMAR',
-                        { controller: 'confirmations', action: 'edit', id: invitation.id },
+                        { controller: 'confirmations', action: 'edit', id: invitation.id, guest: Base64.encode64(@guest.email) },
                         class: 'btn btn-outline-info btn-rounded z-depth-0 my-4 waves-effect'
             %>
           </div>
