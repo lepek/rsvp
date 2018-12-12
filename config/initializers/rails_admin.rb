@@ -43,8 +43,20 @@ RailsAdmin.config do |config|
     object_label_method :full_name
   end
 
+  config.model 'Guest' do
+    object_label_method :full_name
+  end
+
   config.model 'Invitation' do
     object_label_method :guest_name
+    list do
+      field :event
+      field :main_guest
+      field :attendance
+      field :adults
+      field :kids
+      field :guests
+    end
   end
 
   config.authenticate_with do
