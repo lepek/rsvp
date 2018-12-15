@@ -23,11 +23,37 @@ class ConfirmationsController < ApplicationController
 
   def update
     @invitation = Invitation.find(params[:id])
+    guests = []
     if params[:commit].downcase.to_sym == :no
       @invitation.attendance = 2
     elsif params[:commit].downcase.to_sym == :si
       @invitation.attendance = 1
+      if @invitation.adults.to_i > 0
+        params[:guest_adult][:first_name].each_with_index do |first_name, i|
+          last_name = params[:guest_adult][:last_name][i]
+          guest = Guest.create!(
+            first_name: first_name,
+            last_name: last_name,
+            kid: false,
+            main_guest: @guest
+          )
+          guests << guest
+        end
+      end
+      if @invitation.kids.to_i > 0
+        params[:guest_kid][:first_name].each_with_index do |first_name, i|
+          last_name = params[:guest_kid][:last_name][i]
+          guest = Guest.create!(
+              first_name: first_name,
+              last_name: last_name,
+              kid: true,
+              main_guest: @guest
+          )
+          guests << guest
+        end
+      end
     end
+    @invitation.guests = guests
     @invitation.save!
     redirect_to controller: 'confirmations', action: 'index', guest: Base64.encode64(@guest.email)
   end

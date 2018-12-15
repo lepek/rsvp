@@ -45,26 +45,28 @@
                 <div class="card-text group-start">
                   Con quién venis?
                 </div>
-                <% (0...@invitation.adults.to_i).each do %>
+                <% (0...@invitation.adults.to_i).each do |i| %>
                 <div class="card-text form-inline">
                   <div class="form-group">
-                    <label for="guestFirstName" class="sr-only">Nombre</label>
+                    <label for="guestAdultFirstName<%= i %>" class="sr-only">Nombre</label>
                     <input
                       type="text"
-                      id="guestFirstName"
-                      name="guest_first_name"
+                      id="guestAdultFirstName<%= i %>"
+                      name="guest_adult[first_name][]"
                       class="form-control"
                       placeholder="Nombre"
+                      value="<%= @invitation.guests[i] ? @invitation.guests[i].first_name : nil %>"
                     />
                   </div>
                   <div class="form-group">
-                    <label for="guestLastName" class="sr-only">Apellido</label>
+                    <label for="guestAdultLastName<%= i %>" class="sr-only">Apellido</label>
                     <input
                       type="text"
-                      id="guestLastName"
-                      name="guest_last_name"
+                      id="guestAdultLastName<%= i %>"
+                      name="guest_adult[last_name][]"
                       class="form-control"
                       placeholder="Apellido"
+                      value="<%= @invitation.guests[i] ? @invitation.guests[i].last_name : nil %>"
                     />
                   </div>
                 </div>
@@ -75,24 +77,24 @@
                 <div class="card-text group-start">
                   Niños (menores de 10 años)?
                 </div>
-                <% (0...@invitation.kids.to_i).each do %>
+                <% (0...@invitation.kids.to_i).each do |i| %>
                   <div class="card-text form-inline">
                     <div class="form-group">
-                      <label for="guestFirstName" class="sr-only">Nombre</label>
+                      <label for="guestKidFirstName<%= i %>" class="sr-only">Nombre</label>
                       <input
                         type="text"
-                        id="guestFirstName"
-                        name="guest_first_name"
+                        id="guestKidFirstName<%= i %>"
+                        name="guest_kid[first_name][]"
                         class="form-control"
                         placeholder="Nombre"
                       />
                     </div>
                     <div class="form-group">
-                      <label for="guestLastName" class="sr-only">Apellido</label>
+                      <label for="guestKidLastName<%= i %>" class="sr-only">Apellido</label>
                       <input
                         type="text"
-                        id="guestLastName"
-                        name="guest_last_name"
+                        id="guestKidLastName<%= i %>"
+                        name="guest_kid[last_name][]"
                         class="form-control"
                         placeholder="Apellido"
                       />
