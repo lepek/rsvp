@@ -23,6 +23,7 @@ class ConfirmationsController < ApplicationController
 
   def update
     @invitation = Invitation.find(params[:id])
+    @invitation.guests.destroy_all
     guests = []
     if params[:commit].downcase.to_sym == :no
       @invitation.attendance = 2

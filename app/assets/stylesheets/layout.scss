@@ -1,9 +1,25 @@
-@import url(http://fonts.googleapis.com/css?family=Montserrat:400,600,800);
+@import url(http://fonts.googleapis.com/css?family=Montserrat:100,400,600,800);
 
 $font-family-base: 'Montserrat';
 
 body {
   background-color: #EFEEEE;
+}
+
+::placeholder {
+  font-weight: 100;
+}
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  font-weight: 100;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  font-weight: 100;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  font-weight: 100;
+}
+:-moz-placeholder { /* Firefox 18- */
+  font-weight: 100;
 }
 
 .event {
@@ -29,7 +45,10 @@ body {
       margin-right: 0.5em;
       padding: 0rem 0.25rem !important;
       font-size: 10pt;
+    }
 
+    input {
+      font-weight: 600;
     }
   }
 

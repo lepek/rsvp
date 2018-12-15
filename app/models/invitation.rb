@@ -10,7 +10,7 @@ class Invitation < ApplicationRecord
   def guest_name
     if main_guest
       total_guests = adults + kids
-      "#{main_guest.full_name} + #{total_guests}"
+      "#{event.name} - #{main_guest.full_name} + #{total_guests}"
     else
       ''
     end
