@@ -5,9 +5,15 @@
         @address = invitation.event.address.split('.')
         @date = invitation.event.date.strftime('%-d de %B, %Y')
         @time = invitation.event.time.strftime('%H hs.')
+        @button_label = invitation.attendance == 0 ? 'CONFIRMAR' : 'CAMBIAR'
       %>
       <div class="col-auto mb-3">
         <div class="card" style="width: 18rem;">
+          <% if invitation.attendance == 1 %>
+            <%= image_tag('confirmado.png', class: 'stamp', alt: 'Stamp' ) %>
+          <% elsif invitation.attendance == 2 %>
+            <%= image_tag('rechazado.png', class: 'stamp', alt: 'Stamp' ) %>
+          <% end %>
           <%= image_tag(invitation.event.header.url, class: 'card-img-top', alt: 'Card image cap' ) %>
           <div class="card-body">
             <h5 class="card-title"><%= invitation.event.name.upcase %></h5>
@@ -34,7 +40,7 @@
             </div>
           </div>
           <div class="card-footer bg-transparent">
-            <%= link_to 'CONFIRMAR',
+            <%= link_to @button_label,
                         { controller: 'confirmations', action: 'edit', id: invitation.id, guest: Base64.encode64(@guest.email) },
                         class: 'btn btn-outline-info btn-rounded z-depth-0 my-4 waves-effect'
             %>

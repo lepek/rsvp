@@ -51,12 +51,27 @@ body {
       }
     }
   }
+
+  .card-footer {
+    input {
+      width: 5em;
+      margin: 1em;
+    }
+  }
 }
 
 .events-list {
   font-family: Montserrat !important;
 
   text-align: center;
+
+  .stamp {
+    width: 9em;
+    height: 9em;
+    position: absolute;
+    top: 0.5em;
+    left: 0.5em;
+  }
 
   .card {
     border: 0;
