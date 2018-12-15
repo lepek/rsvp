@@ -1,14 +1,14 @@
-<div class="container events-list">
-  <div class="row justify-content-center">
+<div class="container h-100 events-list">
+  <div class="row align-items-center h-100 justify-content-center">
     <% @guest.invitations.each do |invitation| %>
       <%
         @address = invitation.event.address.split('.')
-        @date = invitation.event.date.strftime('%-d de %B, %Y')
+        @date = l(invitation.event.date, format: '%-d de %B, %Y')
         @time = invitation.event.time.strftime('%H hs.')
         @button_label = invitation.attendance == 0 ? 'CONFIRMAR' : 'CAMBIAR'
       %>
       <div class="col-auto mb-3">
-        <div class="card" style="width: 18rem;">
+        <div class="card mx-auto" style="width: 18rem;">
           <% if invitation.attendance == 1 %>
             <%= image_tag('confirmado.png', class: 'stamp', alt: 'Stamp' ) %>
           <% elsif invitation.attendance == 2 %>

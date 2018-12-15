@@ -2,9 +2,12 @@
 
 $font-family-base: 'Montserrat';
 
-body {
+body, html {
   background-color: #EFEEEE;
+  height: 100%;
 }
+
+
 
 ::placeholder {
   font-weight: 100;
