@@ -37,6 +37,11 @@ body, html {
     width: 30em;
   }
 
+  .card-body {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+
   .card-header {
     font-weight: 800;
     font-size: 1.5em;
