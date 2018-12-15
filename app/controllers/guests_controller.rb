@@ -7,8 +7,8 @@ class GuestsController < ApplicationController
     if @guest && !@guest.invitations.empty?
       redirect_to controller: 'confirmations', action: 'index', guest: Base64.encode64(@guest.email)
     else
-      flash[:notice] = "No estas invitado!"
-      render :index
+      flash[:error] = "Lamentablemente no estas invitado!"
+      redirect_to :root
     end
   end
 
