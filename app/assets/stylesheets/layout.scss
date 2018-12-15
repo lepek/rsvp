@@ -22,6 +22,38 @@ body {
   font-weight: 100;
 }
 
+.login {
+  text-align: center;
+
+  .card {
+    width: 30em;
+  }
+
+  .card-header {
+    font-weight: 800;
+    font-size: 1.5em;
+    color: #2FAAAA;
+    text-align: center;
+  }
+
+  input {
+    font-weight: 600;
+  }
+
+  .btn {
+    border-radius: 24px;
+    color: #2FAAAA;
+    font-weight: 600;
+    border-color: #2FAAAA;
+    border-width: 3px;
+  }
+
+  .btn:hover, .btn:focus, .btn:active {
+    color: #FFFFFF;
+    background-color: #2FAAAA;
+  }
+}
+
 .event {
   .card-subtitle {
     text-align: left;
