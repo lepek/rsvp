@@ -32,25 +32,29 @@ class ConfirmationsController < ApplicationController
       if @invitation.adults.to_i > 0
         params[:guest_adult][:first_name].each_with_index do |first_name, i|
           last_name = params[:guest_adult][:last_name][i]
-          guest = Guest.create!(
-            first_name: first_name,
-            last_name: last_name,
-            kid: false,
-            main_guest: @guest
-          )
-          guests << guest
+          if last_name.present?
+            guest = Guest.create!(
+              first_name: first_name,
+              last_name: last_name,
+              kid: false,
+              main_guest: @guest
+            )
+            guests << guest
+          end
         end
       end
       if @invitation.kids.to_i > 0
         params[:guest_kid][:first_name].each_with_index do |first_name, i|
           last_name = params[:guest_kid][:last_name][i]
-          guest = Guest.create!(
-              first_name: first_name,
-              last_name: last_name,
-              kid: true,
-              main_guest: @guest
-          )
-          guests << guest
+          if last_name.present?
+            guest = Guest.create!(
+                first_name: first_name,
+                last_name: last_name,
+                kid: true,
+                main_guest: @guest
+            )
+            guests << guest
+          end
         end
       end
     end
