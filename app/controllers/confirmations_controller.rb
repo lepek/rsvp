@@ -5,7 +5,7 @@ class ConfirmationsController < ApplicationController
   def validate_guest
     guest_email = Base64.decode64(params[:guest]) if params[:guest]
     unless guest_email
-      flash[:alert] = 'Necesito tu email primero!'
+      flash[:error] = 'Necesito tu email primero!'
       redirect_to :root
       return
     end
