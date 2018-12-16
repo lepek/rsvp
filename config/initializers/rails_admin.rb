@@ -41,6 +41,12 @@ RailsAdmin.config do |config|
 
   config.model 'MainGuest' do
     object_label_method :full_name
+    list do
+      field :first_name
+      field :last_name
+      field :email
+      field :invitations
+    end
   end
 
   config.model 'Guest' do
