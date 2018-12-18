@@ -75,3 +75,4 @@ gem 'jquery-rails'
 gem 'carrierwave', '~> 1.0'
 gem 'rack-iframe'
 gem 'rails_admin-i18n'
+
