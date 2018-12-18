@@ -3,8 +3,10 @@ class Invitation < ApplicationRecord
   belongs_to :main_guest
   has_and_belongs_to_many :guests, dependent: :delete_all
 
+  enum attendance: { pending: 0, yes: 1, no: 2 }
+
   def attendance_enum
-    { 'Pending' => 0, 'Yes' => 1, 'No' => 2 }
+    self.class.attendances
   end
 
   def guest_name
