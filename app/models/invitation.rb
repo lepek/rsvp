@@ -9,6 +9,14 @@ class Invitation < ApplicationRecord
     self.class.attendances
   end
 
+  def attendance= value
+    if value.kind_of?(String) and value.to_i.to_s == value
+      super value.to_i
+    else
+      super value
+    end
+  end
+
   def guest_name
     if main_guest
       total_guests = adults + kids
