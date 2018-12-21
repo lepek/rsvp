@@ -58,7 +58,9 @@ RailsAdmin.config do |config|
     list do
       field :event
       field :main_guest
-      field :attendance
+      field :attendance do
+        queryable false
+      end
       field :adults
       field :kids
       field :guests
