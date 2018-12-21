@@ -57,13 +57,17 @@ RailsAdmin.config do |config|
     object_label_method :guest_name
     list do
       field :event
-      field :main_guest
+      field :main_guest do
+        searchable [:first_name, :last_name]
+      end
       field :attendance do
         queryable false
       end
       field :adults
       field :kids
-      field :guests
+      field :guests do
+        searchable [:first_name, :last_name]
+      end
     end
   end
 
