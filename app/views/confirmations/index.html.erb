@@ -9,9 +9,9 @@
       %>
       <div class="col-auto mb-3">
         <div class="card mx-auto" style="width: 18rem;">
-          <% if invitation.attendance == 1 %>
+          <% if invitation.attendance == 'yes' %>
             <%= image_tag('confirmado.png', class: 'stamp', alt: 'Stamp' ) %>
-          <% elsif invitation.attendance == 2 %>
+          <% elsif invitation.attendance == 'no' %>
             <%= image_tag('rechazado.png', class: 'stamp', alt: 'Stamp' ) %>
           <% end %>
           <%= image_tag(invitation.event.header.url, class: 'card-img-top', alt: 'Card image cap' ) %>
