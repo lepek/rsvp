@@ -5,7 +5,7 @@
         @address = invitation.event.address.split('.')
         @date = l(invitation.event.date, format: '%-d de %B, %Y')
         @time = invitation.event.time.strftime('%H hs.')
-        @button_label = invitation.attendance.empty? || invitation.attendance == 0 ? 'CONFIRMAR' : 'MODIFICAR'
+        @button_label = invitation.attendance.nil? || invitation.attendance == 0 ? 'CONFIRMAR' : 'MODIFICAR'
       %>
       <div class="col-auto mb-3">
         <div class="card mx-auto" style="width: 18rem;">
